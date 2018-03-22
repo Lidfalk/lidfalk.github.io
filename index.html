@@ -1,1 +1,54 @@
-Test
+<!DOCTYPE html>
+<html>
+
+</html>
+
+<head>
+    <style>
+        body {
+            background-color: linen;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        h1 {
+            color: maroon;
+            text-align: center;
+            margin-left: 40px;
+
+        }
+
+        p {
+            color: cornflowerblue;
+            text-align: center;
+            font-size: 70px;
+
+        }
+
+        input {
+            text-align: left;
+        }
+    </style>
+</head>
+
+<title>Epochdate</title>
+
+<body>
+
+    <h1>Current EpochDate</h1>
+    <p id='date'></p>
+
+    <h1>Magic Converter</h1>
+    <div align="center"><input type="text" name="firstname"></div>
+    
+</body>
+<script>
+
+    function getEpocDate() {
+        return Math.floor(Date.now() / 1000000);
+    }
+
+
+    document.getElementById('date').innerHTML = getEpocDate();
+</script>
+
+</html>
