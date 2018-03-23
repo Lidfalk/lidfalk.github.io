@@ -10,11 +10,19 @@
             background: #8593AE;
         }
 
-        p {
+        p#epochdate {
             color: #5A4D4E;
             text-align: center;
             font-weight: bold;
             font-size: 130px;
+            margin-bottom: 0px;
+
+        }
+
+        p#datetext {
+            color: #5A4D4E;
+            text-align: center;
+            font-size: 16px;
 
         }
 
@@ -110,13 +118,13 @@
 <title>Epochdate</title>
 
 <body>
-    <p id='date'></p>
+    <p id='epochdate'></p>
+    <p id='datetext'>Today</p1>
     <form class="form-style-7" onsubmit="return test(event)">
         <ul>
             <li>
-
                 <label>Input</label>
-                <input type="text" id="olle" maxlength="100">
+                <input type="text" id="olle" maxlength="100" placeholder="YYYY-MM-DD">
 
                 <span>Paste all your convertion needs here</span>
 
@@ -133,18 +141,28 @@
             return false;
         }
 
+        function getDateString() {
+            var d = new Date();
+            var n = d.toISOString();
+            return n;
+        }
+
         function test(event) {
             event.defaultPrevented;
             if (document.getElementById('olle').value === '') 
             {
-                document.getElementById('date').innerHTML = getEpocDate();
+                document.getElementById('epochdate').innerHTML = getEpocDate();
+                document.getElementById('datetext').innerHTML = "Today"
+                
             } else {
-                document.getElementById('date').innerHTML = Math.floor(Date.parse(document.getElementById('olle').value) / (1000 * 60 * 60 * 24));
+                document.getElementById('epochdate').innerHTML = Math.floor(Date.parse(document.getElementById('olle').value) / (1000 * 60 * 60 * 24));
+                document.getElementById('datetext').innerHTML = new Date(document.getElementById('olle').value).toDateString()
+
             }
             return false;
         }
 
-        document.getElementById('date').innerHTML = getEpocDate();
+        document.getElementById('epochdate').innerHTML = getEpocDate();
     </script>
 </body>
 
