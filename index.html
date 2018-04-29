@@ -2,116 +2,19 @@
 <html>
 
 </html>
-<link href='https://fonts.googleapis.com/css?family=Krona One' rel='stylesheet'>
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+<link href='style.css' rel='stylesheet'>
+
 <head>
-    <style type="text/css">
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #8593AE;
-        }
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118295275-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-        p#epochdate {
-            color: #5A4D4E;
-            text-align: center;
-            font-weight: bold;
-            font-size: 130px;
-            margin-bottom: 0px;
-            font-family: 'Krona One';
-
-        }
-
-        p#datetext {
-            color: #5A4D4E;
-            text-align: center;
-            font-size: 16px;
-
-        }
-
-        .form-style-7 {
-            max-width: 380px;
-            margin: 50px auto;
-            background: #8593AE;
-            border-radius: 2px;
-            padding: 20px;
-        }
-
-        .form-style-7 h1 {
-            display: block;
-            text-align: center;
-            padding: 0;
-            margin: 0px 0px 20px 0px;
-            color: #5C5C5C;
-            font-size: x-large;
-        }
-
-        .form-style-7 ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .form-style-7 li {
-            display: block;
-            padding: 9px;
-            border: 1px solid #5C5C5C;
-            margin-bottom: 30px;
-            border-radius: 3px;
-        }
-
-        .form-style-7 li:last-child {
-            border: none;
-            margin-bottom: 0px;
-            text-align: center;
-        }
-
-        .form-style-7 li>label {
-            display: block;
-            float: left;
-            margin-top: -19px;
-            background: #8593AE;
-            height: 14px;
-            padding: 2px 5px 2px 5px;
-            color: #5C5C5C;
-            font-size: 14px;
-            overflow: hidden;
-        }
-
-        .form-style-7 input[type="text"],
-        .form-style-7 select {
-            box-sizing: border-box;
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            width: 100%;
-            display: block;
-            outline: none;
-            border: none;
-            height: 25px;
-            line-height: 25px;
-            font-size: 16px;
-            padding: 0;
-            text-align: center;
-        }
-
-
-        .form-style-7 li>span {
-            background: #8593AE;
-            display: block;
-            padding: 3px;
-            margin: 0 -9px -9px -9px;
-            text-align: center;
-            color: #5C5C5C;
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 11px;
-        }
-
-        .form-style-7 input[type="submit"],
-
-        .form-style-7 input[type="submit"]:hover,
-        .form-style-7 input[type="button"]:hover {
-            background: #6B9FFF;
-            color: #fff;
-        }
-    </style>
+        gtag('config', 'UA-118295275-1');
+    </script>
 </head>
 <br>
 <br>
@@ -120,51 +23,50 @@
 <title>Epochdate</title>
 
 <body>
-    <p id='epochdate'></p>
-    <p id='datetext'>Today</p1>
-    <form class="form-style-7" onsubmit="return test(event)">
-        <ul>
-            <li>
-                <input type="text" id="olle" maxlength="100" placeholder="YYYY-MM-DD" >
+    <p id='epoch-date'></p>
+    <p id='date-text'>Today</p1>
+        <form class="style-1" onsubmit="return test(event)">
+            <ul>
+                <li>
+                    <input type="text" id="input_field" maxlength="100" placeholder="YYYY-MM-DD, Timestamp in Millis or Seconds">
 
-                <span>All your base are belong to us</span>
+                    <span>All your base are belong to us</span>
 
-            </li>
-            <li>
-                <p id='result'></p>
-            </li>
-        </ul>
-    </form>
-    <script>
+                </li>
+                <li>
+                    <p id='result'></p>
+                </li>
+            </ul>
+        </form>
+        <script>
 
-        function getEpocDate() {
-            return Math.floor(Date.now() / (1000 * 60 * 60 * 24))
-            return false;
-        }
-
-        function getDateString() {
-            var d = new Date();
-            var n = d.toISOString();
-            return n;
-        }
-
-        function test(event) {
-            event.defaultPrevented;
-            if (document.getElementById('olle').value === '') 
-            {
-                document.getElementById('epochdate').innerHTML = getEpocDate();
-                document.getElementById('datetext').innerHTML = "Today"
-                
-            } else {
-                document.getElementById('epochdate').innerHTML = Math.floor(Date.parse(document.getElementById('olle').value) / (1000 * 60 * 60 * 24));
-                document.getElementById('datetext').innerHTML = new Date(document.getElementById('olle').value).toDateString()
-
+            function getEpocDate() {
+                return Math.floor(Date.now() / (1000 * 60 * 60 * 24))
+                return false;
             }
-            return false;
-        }
 
-        document.getElementById('epochdate').innerHTML = getEpocDate();
-    </script>
+            function getDateString() {
+                var d = new Date();
+                var n = d.toISOString();
+                return n;
+            }
+
+            function test(event) {
+                event.defaultPrevented;
+                if (document.getElementById('input_field').value === '') {
+                    document.getElementById('epoch-date').innerHTML = getEpocDate();
+                    document.getElementById('date-text').innerHTML = "Today"
+
+                } else {
+                    document.getElementById('epoch-date').innerHTML = Math.floor(Date.parse(document.getElementById('input_field').value) / (1000 * 60 * 60 * 24));
+                    document.getElementById('date-text').innerHTML = new Date(document.getElementById('input_field').value).toDateString()
+
+                }
+                return false;
+            }
+
+            document.getElementById('epoch-date').innerHTML = getEpocDate();
+        </script>
 </body>
 
 

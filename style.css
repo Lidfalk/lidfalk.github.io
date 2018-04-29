@@ -1,0 +1,105 @@
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #8593AE;
+}
+
+p#epoch-date {
+    color: #5A4D4E;
+    text-align: center;
+    font-weight: bold;
+    font-size: 130px;
+    margin-bottom: 0px;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+p#date-text {
+    color: #5A4D4E;
+    text-align: center;
+    font-size: 16px;
+
+}
+
+.style-1 {
+    max-width: 380px;
+    margin: 50px auto;
+    background: #8593AE;
+    border-radius: 2px;
+    padding: 20px;
+}
+
+.style-1 h1 {
+    display: block;
+    text-align: center;
+    padding: 0;
+    margin: 0px 0px 20px 0px;
+    color: #5C5C5C;
+    font-size: x-large;
+}
+
+.style-1 ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.style-1 li {
+    display: block;
+    padding: 9px;
+    border: 1px solid #5C5C5C;
+    margin-bottom: 30px;
+    border-radius: 3px;
+}
+
+.style-1 li:last-child {
+    border: none;
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+.style-1 li>label {
+    display: block;
+    float: left;
+    margin-top: -19px;
+    background: #8593AE;
+    height: 14px;
+    padding: 2px 5px 2px 5px;
+    color: #5C5C5C;
+    font-size: 14px;
+    overflow: hidden;
+}
+
+.style-1 input[type="text"],
+.style-1 select {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 100%;
+    display: block;
+    outline: none;
+    border: none;
+    height: 25px;
+    line-height: 25px;
+    font-size: 16px;
+    padding: 0;
+    text-align: center;
+}
+
+
+.style-1 li>span {
+    background: #8593AE;
+    display: block;
+    padding: 3px;
+    margin: 0 -9px -9px -9px;
+    text-align: center;
+    color: #5C5C5C;
+    font-size: 11px;
+}
+
+.style-1 input[type="submit"],
+.style-1 input[type="submit"]:hover,
+.style-1 input[type="button"]:hover {
+    background: #6B9FFF;
+    color: #fff;
+}
