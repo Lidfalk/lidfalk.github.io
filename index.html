@@ -7,28 +7,10 @@
 
 <head>
 
-    <meta name="description" content="A simple and intuitive date and Unix timestamp converter, converts from and to Unix timestamps represented as ms or days.">
+    <meta name="description"
+        content="A simple and intuitive date and Unix timestamp converter, converts from and to Unix timestamps represented as ms, days or dateString.">
     <meta name="keywords" content="Epochdate,Unix,date,timestamp,converter,time,date,convert">
-    <meta name="author" content="Hans Sjoberg">
-
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118295275-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-118295275-1');
-    </script>
-
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({
-            google_ad_client: "ca-pub-9501638358525767",
-            enable_page_level_ads: true
-        });
-    </script>
+    <meta name="author" content="Hans Lidfalk">
 
     <link rel="icon" href="icon.png" type="image/png" sizes='16x16'>
 </head>
@@ -39,51 +21,66 @@
 <title>Epochdate</title>
 
 <body>
-    <p id='epoch-date'></p>
-    <p id='date-text'>Today</p1>
-        <form class="style-1" onsubmit="return test(event)">
-            <ul>
-                <li>
-                    <input type="text" id="input_field" maxlength="100" placeholder="YYYY-MM-DD, Timestamp in Millis or Seconds">
+    <p id='epoch-date-string'></p>
+    <p id='date-string'>Today</p1>
+    <form class="style-1" onsubmit="return parseInputField(event)">
+        <ul>
+            <li>
+                <input type="text" id="input_field" maxlength="100"
+                    placeholder="YYYY-MM-DD, Timestamp in Millis or Seconds">
 
-                    <span>Input the string to be converted.</span>
+                <span>Input the string to be converted.</span>
 
-                </li>
-                <li>
-                    <p id='result'></p>
-                </li>
-            </ul>
-        </form>
-        <script>
+            </li>
+            <li>
+                <p id='result'></p>
+            </li>
+        </ul>
+    </form>
+    <script>
 
-            function getEpocDate() {
-                return Math.floor(Date.now() / (1000 * 60 * 60 * 24))
-                return false;
-            }
+        function getEpocDate() {
+            return Math.floor(Date.now() / (1000 * 60 * 60 * 24))
+        }
 
-            function getDateString() {
-                var d = new Date();
-                var n = d.toISOString();
-                return n;
-            }
+        function parseInputField(event) {
+            event.defaultPrevented;
 
-            function test(event) {
-                event.defaultPrevented;
-                if (document.getElementById('input_field').value === '') {
-                    document.getElementById('epoch-date').innerHTML = getEpocDate();
-                    document.getElementById('date-text').innerHTML = "Today"
+            var inputValue = document.getElementById('input_field').value;
+
+            if (inputValue === '') {
+                document.getElementById('epoch-date-string').innerHTML = getEpocDate();
+                document.getElementById('date-string').innerHTML = "Today"
+
+            } else {
+
+
+                if (!isNaN(inputValue)) //Handle the integer Scenario
+                {
+                    var inputNumber = Number(inputValue)
+                    var outputDate = new Date(inputNumber).toISOString().split('T')[0];
+                    var outputString = 'Unix Timestamp: ' + inputValue
+
+                    // This would be the year 2517-08-01 so we assume it is Millis and overwrite the output
+                    if (inputNumber < 200000) {
+                        outputDate = new Date(inputNumber * (1000 * 60 * 60 * 24)).toISOString().split('T')[0];
+                        var outputString = 'EpochDate: ' + inputValue
+                    }
+
+                    document.getElementById('epoch-date-string').innerHTML = outputDate;
+                    document.getElementById('date-string').innerHTML = outputString
 
                 } else {
-                    document.getElementById('epoch-date').innerHTML = Math.floor(Date.parse(document.getElementById('input_field').value) / (1000 * 60 * 60 * 24));
-                    document.getElementById('date-text').innerHTML = new Date(document.getElementById('input_field').value).toDateString()
-
+                    // Handle the Date String scenario
+                    document.getElementById('epoch-date-string').innerHTML = Math.floor(Date.parse(inputValue) / (1000 * 60 * 60 * 24));
+                    document.getElementById('date-string').innerHTML = inputValue
                 }
-                return false;
             }
+            return false;
+        }
 
-            document.getElementById('epoch-date').innerHTML = getEpocDate();
-        </script>
+        document.getElementById('epoch-date-string').innerHTML = getEpocDate();
+    </script>
 </body>
-
 
 </html>
